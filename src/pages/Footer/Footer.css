@@ -1,27 +1,29 @@
 .footer {
-	display: flex;
-	justify-content: end;
-	gap: 20px;
+  display: flex;
+  justify-content: end;
+  gap: 20px;
 }
 .footer_heading {
-	color: white;
+  color: white;
 }
 
 h4 {
-	color: #66fcf1;
+  color: white;
 }
 
 .footer_heading:hover {
-	color: #66fcf1;
+  color: #66fcf1;
 }
 .footer_main {
-	display: flex;
-	justify-content: space-between;
-	/* background-color: black; */
+  display: flex;
+  justify-content: space-between;
+  /* background-color: black; */
 }
 .sticky_footer {
-	position: sticky;
-	top: 100%;
-	display: flex;
-	justify-content: space-between;
+  position: sticky;
+  top: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(250, 55, 55);
+  padding: 20px 50px;
 }

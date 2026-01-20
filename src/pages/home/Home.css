@@ -1,31 +1,51 @@
 body {
-	background-color: #242582;
-	font-family: Apple Chancery, cursive;
+  /* background-color: #242582; */
+  /* font-family:
+    Apple Chancery,
+    cursive; */
 }
-.Heading {
-	color: #66fcf1;
-	text-align: center;
+.heading_div {
+  margin-top: 40px;
 }
-.display {
-	display: flex;
-	justify-content: space-between;
-	box-shadow: 10px;
-}
-.card {
-	margin-left: 40px;
-}
-.phone {
-	line-height: 1.5;
-	height: auto;
-	border-style: solid;
-	font-size: 20px;
-	text-align: center;
-	margin-top: 10px;
-	box-sizing: border-box;
-	border-color: white;
-	color: black;
-	background-color: white;
+.heading_div h3,
+.heading_div h1 {
+  color: rgb(250, 55, 55);
+  text-align: center;
+  margin-top: 20px;
 }
 .home_grid {
-	margin-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+/* .display {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 10px;
+} */
+
+.card {
+  margin-top: 50px;
+  border: solid 1px rgb(250, 55, 55);
+  /* margin-left: 40px; */
+  /* padding: 0px 40px; */
+  width: 100%;
+  /* height: 500px; */
+  text-align: center;
+}
+.Homeproduct_img {
+  /* height: 300px;
+  width: 100%; */
+  /* This ensures the whole phone is visible */
+  /* object-fit: contain; */
+  /* Adds a background color so the "empty" space looks intentional */
+  /* background-color: #f8f8f8; */
+  /* Adds space so the phone doesn't touch the red border */
+  padding: 0 15px;
+  /* margin-left: 15%; */
+  height: 250px;
+  width: 70%;
+}
+.Homeproduct_title {
+  font-size: 10px;
+  color: #000;
 }

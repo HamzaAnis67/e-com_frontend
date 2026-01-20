@@ -13,81 +13,102 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 const Home = () => {
-	const [products, setProducts] = useState([]);
-	const [loading, setLoading] = useState(false);
+  //Use state for storing and loading product from database
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // const [fake, setFake] = useState([]);
+  // console.log(fake);
 
-	const fetchproduct = async () => {
-		setLoading(true);
-		const response = await fetch(
-			"https://wild-lime-hatchling-tux.cyclic.cloud/products/Allproducts",
-			{
-				headers: {
-					"Content-Type": "application/json",
-				},
-			}
-		);
-		const data = await response.json();
-		setProducts(data.product);
-		setLoading(false);
-	};
+  // Making fetch function for fetching product from database on local host
+  const fetchproduct = async () => {
+    setLoading(true);
+    const response = await fetch(
+      "https://e-com-backend-2f27.onrender.com/products/Allproducts",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      },
+    );
+    const data = await response.json();
+    setProducts(data.product);
+    console.log(products);
+    setLoading(false);
+  };
 
-	useEffect(() => {
-		fetchproduct();
-	}, []);
+  // const fakestore = async () => {
+  // 	setLoading(true);
+  // 	const response = await fetch("https://fakestoreapi.com/products");
+  // 	const jsonData = await response.json();
+  // 	setFake(jsonData);
+  // 	setLoading(false);
+  // };
 
-	const AllMobiles = products.map((data, id) => [
-		<Grid item md={3} key={id}>
-			<Link
-				style={{ textDecoration: "none" }}
-				key={id}
-				to={`/product_detail/${data._id}`}>
-				<div className="phone">
-					<Card sx={{ maxWidth: "12rem" }} className="card">
-						<CardActionArea>
-							<CardMedia
-								component="img"
-								height="auto"
-								image={data.image}
-								alt="mobile"
-							/>
-							<CardContent>
-								<Typography gutterBottom variant="h5" component="div">
-									{data.productName}
-								</Typography>
-								<Typography variant="body2" color="text.secondary">
-									{"Rs:" + data.price}
-								</Typography>
-							</CardContent>
-						</CardActionArea>
-					</Card>
-				</div>
-			</Link>
-		</Grid>,
-	]);
+  useEffect(() => {
+    // fakestore();
+    //Calling fetch function for fetching product from database on local host
+    fetchproduct();
+  }, []);
 
-	return (
-		<>
-			<Container maxWidth="lg">
-				<div>
-					<h1 className="Heading">
-						Say goodbye to the old and welcome the new!
-					</h1>
-					<h3 className="Heading">
-						Shop The Lastest Gadgets Now At Affortable Prices
-					</h3>
-				</div>
+  const AllMobiles = products.map((data, id) => [
+    <Grid item md={3} key={id}>
+      <Link
+        style={{ textDecoration: "none" }}
+        key={id}
+        to={`/product_detail/${data._id}`}
+      >
+        <div className="phone">
+          <Card className="card">
+            <CardActionArea>
+              {/* <CardMedia
+                component="img"
+                image={data.image}
+                alt={data.productName}
+                className="Homeproduct_img"
+                sx={{ width: "70%", display: "block" }}
+              /> */}
+              <img src={data.image} alt="" className="Homeproduct_img" />
+              <CardContent>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                  className="Homeproduct_title"
+                  fontSize={"20px"}
+                >
+                  {data.productName}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {"Rs:" + data.price}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        </div>
+      </Link>
+    </Grid>,
+  ]);
 
-				{loading ? (
-					<CircularProgress />
-				) : (
-					<>
-						<Grid container spacing={2} className="home_grid">
-							{AllMobiles}
-						</Grid>
-					</>
-				)}
-			</Container>
-		</>
-	);
+  return (
+    <>
+      <Container maxWidth="lg">
+        <div className="heading_div">
+          <h1>Say goodbye to the old and welcome the new!</h1>
+          <h3>Shop The Lastest Gadgets Now At Affortable Prices</h3>
+        </div>
+
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <>
+            <Grid container spacing={2} className="home_grid">
+              {AllMobiles}
+            </Grid>
+          </>
+        )}
+      </Container>
+    </>
+  );
 };
 export default Home;
