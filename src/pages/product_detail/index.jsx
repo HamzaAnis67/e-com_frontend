@@ -20,7 +20,7 @@ const Product_detail = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const cartContext = useContext(CartContext);
-  const { addToCart, removeFromCart } = cartContext;
+  const { addToCart, removeFromCart, cartItems } = cartContext;
 
   //Making fetch function for fetching single product from database on local host
   const fetchSingleProduct = async () => {
@@ -61,7 +61,6 @@ const Product_detail = () => {
     setMessage(data.message);
     setOpen(true);
   };
-
   useEffect(() => {
     fetchSingleProduct();
     // Singlefakestore();
@@ -82,20 +81,21 @@ const Product_detail = () => {
         ) : (
           <>
             <Grid container spacing={4}>
-              <Grid item md={5}>
+              <Grid item md={4}>
                 <div className="detail_page">
                   <img src={test.image} />
                 </div>
               </Grid>
-              <Grid item md={7}>
+              <Grid item md={8}>
                 <div className="product_details">
                   <h2>{"Name: " + test.productName}</h2>
-                  <h2>{"ID: " + test._id}</h2>
+                  {/* <h2>{"ID: " + test._id}</h2> */}
                   <h2>{"Price: " + test.price + " Rs"}</h2>
                   <h2>{"Description: " + test.description}</h2>
                   <Button
                     variant="outlined"
                     color="error"
+                    style={{ marginRight: "30px" }}
                     onClick={() => addToCart(test)}
                   >
                     Add To Cart
@@ -104,6 +104,7 @@ const Product_detail = () => {
                     className="RemoveFromCart_btn"
                     variant="outlined"
                     color="error"
+                    disabled={!(cartItems.some(item => item.productName === test.productName))}
                     onClick={() => removeFromCart(test.productName)}
                   >
                     Remove From Cart
@@ -120,7 +121,7 @@ const Product_detail = () => {
             </Grid>
 
             {user ? (
-              <div>
+              <div className="main">
                 <Snackbar
                   anchorOrigin={{ vertical: "top", horizontal: "right" }}
                   open={open}
@@ -129,8 +130,8 @@ const Product_detail = () => {
                   message={message}
                 />
                 <Grid container>
-                  <Grid item md={5}></Grid>
-                  <Grid item md={7}>
+                  <Grid item md={4}></Grid>
+                  <Grid item md={8}>
                     <div>
                       <IconButton
                         onClick={() => navigate(`/products/edit/${id}`)}

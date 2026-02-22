@@ -17,7 +17,7 @@ const Footer = () => {
       {user ? (
         <footer className="sticky_footer">
           <Container>
-            <div className=" footer_main">
+            <div className="footer_main">
               <div>
                 <h4>Thank You For Visiting </h4>
               </div>
@@ -39,16 +39,18 @@ const Footer = () => {
           </Container>
         </footer>
       ) : (
+        <footer className="sticky_footer">
         <Container>
-          <div className=" footer_main">
+          <div className="footer_main">
             <div>
               <h4>Thank You For Visiting </h4>
             </div>
-            <Link to={"/login"}>
+            <Link to={"/login"} style={{ textDecoration: "none" }}>
               <h4 className="footer_heading">Login</h4>
             </Link>
           </div>
         </Container>
+        </footer>
       )}
     </>
   );

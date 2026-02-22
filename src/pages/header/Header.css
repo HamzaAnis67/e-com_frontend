@@ -6,6 +6,7 @@
 }
 .sub_heading {
   color: white;
+  font-size: 18px;
 }
 .sub_heading:hover {
   color: #66fcf1;

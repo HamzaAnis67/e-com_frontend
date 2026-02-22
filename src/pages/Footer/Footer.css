@@ -5,6 +5,7 @@
 }
 .footer_heading {
   color: white;
+  font-size: 18px;
 }
 
 h4 {
@@ -17,7 +18,6 @@ h4 {
 .footer_main {
   display: flex;
   justify-content: space-between;
-  /* background-color: black; */
 }
 .sticky_footer {
   position: sticky;

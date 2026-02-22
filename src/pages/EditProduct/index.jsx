@@ -44,6 +44,39 @@ const EditProduct = () => {
   }, []);
 
   const handleSubmit = async () => {
+    // Validate product name
+    if (!test.productName || !test.productName.trim()) {
+      setMessage("Product name is required");
+      setOpen(true);
+      return;
+    }
+    
+    // Validate color
+    if (!test.color || !test.color.trim()) {
+      setMessage("Color is required");
+      setOpen(true);
+      return;
+    }
+    
+    // Validate price
+    if (!test.price || !test.price.toString().trim()) {
+      setMessage("Price is required");
+      setOpen(true);
+      return;
+    }
+    if (isNaN(test.price) || parseFloat(test.price) <= 0) {
+      setMessage("Please enter a valid price");
+      setOpen(true);
+      return;
+    }
+    
+    // Validate description
+    if (!test.description || !test.description.trim()) {
+      setMessage("Description is required");
+      setOpen(true);
+      return;
+    }
+
     const productData = { ...test };
     const response = await fetch(
       `https://e-com-backend-2f27.onrender.com/products/edit/${id}`,
@@ -78,44 +111,53 @@ const EditProduct = () => {
         <h1>Edit Product</h1>
         <TextField
           fullWidth
+          error
           value={test.productName}
           onChange={handleChange}
           id="outlined-basic"
           name="productName"
           variant="outlined"
-          sx={{ input: { color: "#66fcf1" } }}
+          required
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <TextField
           fullWidth
+          error
           value={test.color}
           onChange={handleChange}
           id="outlined-basic"
           name="color"
           variant="outlined"
-          sx={{ input: { color: "#66fcf1" } }}
+          required
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <TextField
           fullWidth
+          error
           value={test.price}
           onChange={handleChange}
           id="outlined-basic"
           name="price"
           variant="outlined"
-          sx={{ input: { color: "#66fcf1" } }}
+          required
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <TextField
           fullWidth
+          error
           multiline
           rows={4}
-          inputProps={{ style: { color: "#66fcf1" } }}
+          inputProps={{ style: { color: "rgb(250, 55, 55)" } }}
           value={test.description}
           onChange={handleChange}
           name="description"
           id="outlined-basic"
           variant="outlined"
+          required
         />
         <TextField
           fullWidth
+          error
           onChange={handleChange}
           name="image"
           type="file"

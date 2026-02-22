@@ -3,18 +3,54 @@ body {
   /* font-family:
     Apple Chancery,
     cursive; */
+  margin: 0;
+  padding: 0;
 }
 .heading_div {
   margin-top: 40px;
+  padding: 0 20px;
 }
-.heading_div h3,
 .heading_div h1 {
   color: rgb(250, 55, 55);
   text-align: center;
   margin-top: 20px;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  /* line-height: 1.2; */
+}
+.heading_div h3 {
+  color: rgb(250, 55, 55);
+  text-align: center;
+  margin-top: 15px;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  /* line-height: 1.3; */
 }
 .home_grid {
-  margin-bottom: 25px;
+  margin: 30px 0;
+  padding: 0 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .card {
+    margin-top: 20px;
+    min-height: 280px;
+  }
+  .Homeproduct_img {
+    height: 160px;
+    width: 70%;
+  }
+  .heading_div {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 960px) {
+  .card {
+    min-height: 300px;
+  }
+  .Homeproduct_img {
+    height: 180px;
+  }
 }
 
 /* .display {
@@ -24,30 +60,39 @@ body {
 } */
 
 .card {
-  margin-top: 50px;
+  margin-top: 30px;
   border: solid 1px rgb(250, 55, 55);
-  /* margin-left: 40px; */
-  /* padding: 0px 40px; */
   width: 100%;
-  /* height: 500px; */
   text-align: center;
-  height: 330px;
+  height: auto;
+  min-height: 330px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(250, 55, 55, 0.15);
 }
 .Homeproduct_img {
-  /* height: 300px;
-  width: 100%; */
-  /* This ensures the whole phone is visible */
-  /* object-fit: contain; */
-  /* Adds a background color so the "empty" space looks intentional */
-  /* background-color: #f8f8f8; */
-  /* Adds space so the phone doesn't touch the red border */
-  padding: 0 15px;
-  /* margin-left: 15%; */
-  height: 220px;
+  padding: 10px;
+  height: 200px;
   object-fit: contain;
-  width: 70%;
+  width: 80%;
+  max-width: 200px;
+  transition: transform 0.2s ease-in-out;
+}
+.Homeproduct_img:hover {
+  transform: scale(1.05);
 }
 .Homeproduct_title {
-  font-size: 10px;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   color: #000;
+  font-weight: 600;
+  margin: 8px 0;
+  line-height: 1.2;
+  min-height: 2.4rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

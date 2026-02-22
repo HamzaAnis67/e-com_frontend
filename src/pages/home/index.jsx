@@ -52,7 +52,7 @@ const Home = () => {
   }, []);
 
   const AllMobiles = products.map((data, id) => [
-    <Grid item md={3} key={id}>
+    <Grid item xs={12} sm={6} md={4} lg={3} key={id}>
       <Link
         style={{ textDecoration: "none" }}
         key={id}
@@ -92,7 +92,7 @@ const Home = () => {
 
   return (
     <>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <div className="heading_div">
           <h1>Say goodbye to the old and welcome the new!</h1>
           <h3>Shop The Lastest Gadgets Now At Affortable Prices</h3>
@@ -102,7 +102,7 @@ const Home = () => {
           <CircularProgress />
         ) : (
           <>
-            <Grid container spacing={2} className="home_grid">
+            <Grid container spacing={{ xs: 2, sm: 3, md: 4 }} className="home_grid">
               {AllMobiles}
             </Grid>
           </>
