@@ -1,6 +1,11 @@
 .Orders_info {
-	margin-top: 50px;
+	margin: 30px 0;
 	border: solid;
 	border-radius: 10px;
-	border-color: orange;
+	border-color: #000;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+.Orders_info h3 {
+	color: rgb(250, 55, 55);
 }

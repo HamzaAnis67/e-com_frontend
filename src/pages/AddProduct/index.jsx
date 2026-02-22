@@ -54,6 +54,46 @@ const AddProduct = () => {
   };
 
   const handleSubmit = async () => {
+    // Validate product name
+    if (!productName.trim()) {
+      setMessage("Product name is required");
+      setOpen(true);
+      return;
+    }
+    
+    // Validate color
+    if (!color.trim()) {
+      setMessage("Color is required");
+      setOpen(true);
+      return;
+    }
+    
+    // Validate price
+    if (!price.trim()) {
+      setMessage("Price is required");
+      setOpen(true);
+      return;
+    }
+    if (isNaN(price) || parseFloat(price) <= 0) {
+      setMessage("Please enter a valid price");
+      setOpen(true);
+      return;
+    }
+    
+    // Validate description
+    if (!description.trim()) {
+      setMessage("Description is required");
+      setOpen(true);
+      return;
+    }
+    
+    // Validate image
+    if (!image) {
+      setMessage("Product image is required");
+      setOpen(true);
+      return;
+    }
+
     const productData = {
       productName,
       color,
@@ -101,6 +141,7 @@ const AddProduct = () => {
       <div className="container_form">
         <h1>Add product Form</h1>
         <TextField
+          error
           fullWidth
           value={productName}
           onChange={handleChange}
@@ -109,9 +150,10 @@ const AddProduct = () => {
           label="productName"
           variant="outlined"
           className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <TextField
+          error
           fullWidth
           value={color}
           onChange={handleChange}
@@ -120,9 +162,10 @@ const AddProduct = () => {
           label="Color"
           variant="outlined"
           className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <TextField
+          error
           fullWidth
           value={price}
           onChange={handleChange}
@@ -131,9 +174,10 @@ const AddProduct = () => {
           label="Price"
           variant="outlined"
           className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <TextField
+          error
           fullWidth
           multiline
           rows={4}
@@ -144,9 +188,10 @@ const AddProduct = () => {
           label="Description"
           variant="outlined"
           className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <TextField
+          error
           fullWidth
           onChange={handleUpload}
           type="file"

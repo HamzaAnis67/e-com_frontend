@@ -72,6 +72,7 @@ const CheckOut = () => {
         <h1>Check Out</h1>
       </div>
       <div className="container_Loginform">
+        
         <TextField
           fullWidth
           value={email}

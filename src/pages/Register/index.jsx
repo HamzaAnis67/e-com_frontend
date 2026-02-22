@@ -23,6 +23,31 @@ const Register = () => {
   };
 
   const handleSubmit = async () => {
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!userEmail.trim()) {
+      setMessage("Email is required");
+      setOpen(true);
+      return;
+    }
+    if (!emailRegex.test(userEmail)) {
+      setMessage("Please enter a valid email address");
+      setOpen(true);
+      return;
+    }
+    
+    // Validate password
+    if (!password.trim()) {
+      setMessage("Password is required");
+      setOpen(true);
+      return;
+    }
+    if (password.length < 6) {
+      setMessage("Password must be at least 6 characters long");
+      setOpen(true);
+      return;
+    }
+
     const userData = {
       userEmail,
       password,
@@ -68,6 +93,7 @@ const Register = () => {
       </div>
       <div className="container_Loginform">
         <TextField
+        error
           fullWidth
           value={userEmail}
           onChange={handleChange}
@@ -77,9 +103,11 @@ const Register = () => {
           variant="outlined"
           type="email"
           className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
+          required
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <TextField
+        error
           fullWidth
           value={password}
           onChange={handleChange}
@@ -89,7 +117,8 @@ const Register = () => {
           variant="outlined"
           type="password"
           className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
+          required
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <Button onClick={handleSubmit} fullWidth variant="contained">
           Register

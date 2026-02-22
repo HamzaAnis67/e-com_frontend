@@ -21,6 +21,26 @@ const ContactPage = () => {
   };
 
   const handleSubmit = async () => {
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!customerEmail.trim()) {
+      setMessage("Email is required");
+      setOpen(true);
+      return;
+    }
+    if (!emailRegex.test(customerEmail)) {
+      setMessage("Please enter a valid email address");
+      setOpen(true);
+      return;
+    }
+    
+    // Validate feedback
+    if (!customerFeedback.trim()) {
+      setMessage("Feedback is required");
+      setOpen(true);
+      return;
+    }
+
     const CustomerData = {
       customerEmail,
       customerFeedback,
@@ -57,6 +77,8 @@ const ContactPage = () => {
       </div>
       <div className="container_Loginform">
         <TextField
+        error
+          type="email"
           fullWidth
           value={customerEmail}
           onChange={handleChange}
@@ -65,9 +87,11 @@ const ContactPage = () => {
           label="Email"
           variant="outlined"
           className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
+          required
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
         <TextField
+          error
           fullWidth
           value={customerFeedback}
           onChange={handleChange}
@@ -76,9 +100,10 @@ const ContactPage = () => {
           label="Feedback/Query"
           variant="outlined"
           className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
+          required
+          sx={{ input: { color: "rgb(250, 55, 55)" } }}
         />
-        <Button onClick={handleSubmit} fullWidth variant="contained">
+        <Button onClick={handleSubmit} fullWidth variant="contained" >
           Submit
         </Button>
       </div>
