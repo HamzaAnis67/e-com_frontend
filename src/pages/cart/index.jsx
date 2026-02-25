@@ -3,7 +3,7 @@ import CartContext from "../../context/cartContext";
 import { useContext, useEffect, useState } from "react";
 import { DeleteOutlined } from "@mui/icons-material";
 import { Link, useParams } from "react-router-dom";
-import { Container } from "@mui/material";
+import { Container, Grid, IconButton, Typography, Box } from "@mui/material";
 import Button from "@mui/material/Button";
 
 const Cart = () => {
@@ -12,43 +12,63 @@ const Cart = () => {
 
 	return (
 		<>
-			<Container maxWidth="lg">
-				<h1>Cart page</h1>
+			<Container maxWidth="xl">
+				<div className="cart_header">
+					<Typography variant="h4" component="h1" className="cart_title">
+						Shopping Cart
+					</Typography>
+				</div>
 
-				<div>
-					{cartItems.length ? (
-						cartItems.map((item, id) => (
-							<div key={id}>
-								<div className="cartRoot">
-									<h3>{item.productName}</h3>
-									<h3>Rs: {item.price}</h3>
-									<DeleteOutlined
-										className="delete_icon"
-										onClick={() => removeFromCart(item.productName)}
-									/>
-								</div>
-							</div>
-						))
-					) : (
-						<h3 className="noitem_heading">No Items in the Cart</h3>
-					)}
-					<br />
-
+				<div className="cart_content">
 					{cartItems.length ? (
 						<>
-							<div>
-								<Link to="/checkout">
-									<Button variant="contained">Check Out</Button>
+							<div className="cart_items">
+								{cartItems.map((item, id) => (
+									<div key={id} className="cart_item">
+										<div className="item_details">
+											<Typography variant="h6" className="item_name">
+												{item.productName}
+											</Typography>
+											<Typography variant="body1" className="item_price">
+												Rs: {item.price}
+											</Typography>
+										</div>
+										<IconButton
+											className="delete_button"
+											onClick={() => removeFromCart(item.productName)}
+											aria-label="Delete item"
+										>
+											<DeleteOutlined className="delete_icon" />
+										</IconButton>
+									</div>
+								))}
+							</div>
+							
+							<div className="cart_actions">
+								<Link to="/checkout" className="checkout_link">
+									<Button variant="contained" className="checkout_button">
+										Proceed to Checkout
+									</Button>
+								</Link>
+								<Link to="/" className="home_link">
+									<Button variant="outlined" className="home_button">
+										Continue Shopping
+									</Button>
 								</Link>
 							</div>
-							<br />
 						</>
 					) : (
-						<></>
+						<div className="empty_cart">
+							<Typography variant="h5" className="noitem_heading">
+								No Items in the Cart
+							</Typography>
+							<Link to="/" className="home_link">
+								<Button variant="contained" className="home_button">
+									Start Shopping
+								</Button>
+							</Link>
+						</div>
 					)}
-					<Link to="/">
-						<Button variant="contained">Back To Home Page</Button>
-					</Link>
 				</div>
 			</Container>
 		</>

@@ -1,6 +1,6 @@
 import "./Feedbacks.css";
 import { useEffect, useState } from "react";
-import { CircularProgress, Container } from "@mui/material";
+import { CircularProgress, Container, Typography, Box, Grid } from "@mui/material";
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState([]);
@@ -27,15 +27,56 @@ const Feedback = () => {
 
   const allfeedback = feedback.map((data, id) => {
     return (
-      <Container key={id}>
+      <Grid item xs={12} sm={10} md={8} lg={6} key={id}>
         <div className="feedback_info">
-          <h3>Customer Email: {data.customerEmail}</h3>
-          <h3>Customer Feedback: {data.customerFeedback}</h3>
+          <div className="feedback_header">
+            <Typography variant="h3" className="feedback_email">
+              Customer Email
+            </Typography>
+            <Typography variant="body1" className="email_value">
+              {data.customerEmail}
+            </Typography>
+          </div>
+          <div className="feedback_content">
+            <Typography variant="h3" className="feedback_title">
+              Customer Feedback
+            </Typography>
+            <Typography variant="body1" className="feedback_text">
+              {data.customerFeedback}
+            </Typography>
+          </div>
         </div>
-      </Container>
+      </Grid>
     );
   });
-  return <>{loading ? <CircularProgress /> : <>{allfeedback}</>}</>;
+
+  return (
+    <>
+      <div className="feedback_heading">
+        <h1>Customer Feedback</h1>
+        
+      </div>
+      
+      {loading ? (
+        <Box className="loading_container">
+          <CircularProgress />
+        </Box>
+      ) : feedback.length === 0 ? (
+        <Box className="empty_state">
+          <Typography variant="h6">No feedback available</Typography>
+          <Typography variant="body2">
+            Be the first to share your thoughts with us!
+          </Typography>
+        </Box>
+      ) : (
+        <Container maxWidth="lg" className="feedback_container">
+          <Grid container spacing={3} justifyContent="center">
+            {allfeedback}
+          </Grid>
+        </Container>
+      )}
+    </>
+  );
 };
 
 export default Feedback;

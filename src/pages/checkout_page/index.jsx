@@ -33,6 +33,39 @@ const CheckOut = () => {
   };
 
   const handleSubmit = async () => {
+    // Validate name
+    if (!name.trim()) {
+      alert("Name is required");
+      return;
+    }
+    
+    // Validate email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim()) {
+      alert("Email is required");
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+    
+    // Validate phone
+    if (!phoneNumber.trim()) {
+      alert("Phone number is required");
+      return;
+    }
+    if (isNaN(phoneNumber) || phoneNumber.length < 10) {
+      alert("Please enter a valid phone number");
+      return;
+    }
+    
+    // Validate address
+    if (!address.trim()) {
+      alert("Address is required");
+      return;
+    }
+
     const OrderData = {
       email,
       address,
@@ -69,57 +102,86 @@ const CheckOut = () => {
   return (
     <>
       <div className="checkout_heading">
-        <h1>Check Out</h1>
+        <h1>Checkout</h1>
       </div>
-      <div className="container_Loginform">
+      <div className="checkout_container">
+        <div className="checkout_form">
+          <div className="form_fields">
+            <TextField
+              fullWidth
+              value={name}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="Name"
+              label="Full Name"
+              variant="outlined"
+              className="text_field"
+              required
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+            />
+            <TextField
+              fullWidth
+              value={email}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="Email"
+              label="Email Address"
+              variant="outlined"
+              className="text_field"
+              required
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+            />
+            <TextField
+              fullWidth
+              value={phoneNumber}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="PhoneNumber"
+              label="Phone Number"
+              variant="outlined"
+              className="text_field"
+              required
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+            />
+            <TextField
+              fullWidth
+              multiline
+              rows={3}
+              value={address}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="Address"
+              label="Delivery Address"
+              variant="outlined"
+              className="text_field"
+              required
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+            />
+          </div>
+          <Button onClick={handleSubmit} fullWidth variant="contained" className="submit_button">
+            Place Order
+          </Button>
+        </div>
         
-        <TextField
-          fullWidth
-          value={email}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="Email"
-          label="Email"
-          variant="outlined"
-          className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
-        />
-        <TextField
-          fullWidth
-          value={address}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="Address"
-          label="Address"
-          variant="outlined"
-          className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
-        />
-        <TextField
-          fullWidth
-          value={phoneNumber}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="PhoneNumber"
-          label="PhoneNumber"
-          variant="outlined"
-          className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
-        />
-        <TextField
-          fullWidth
-          value={name}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="Name"
-          label="Name"
-          variant="outlined"
-          className="text_field"
-          sx={{ input: { color: "#66fcf1" } }}
-        />
-        <Button onClick={handleSubmit} fullWidth variant="contained">
-          Submit
-        </Button>
+        {products.length > 0 && (
+          <div className="order_summary">
+            <h2>Order Summary</h2>
+            <div className="summary_items">
+              {products.map((item, index) => (
+                <div key={index} className="summary_item">
+                  <span className="item_name">{item.productName}</span>
+                  <span className="item_price">Rs: {item.price}</span>
+                </div>
+              ))}
+            </div>
+            <div className="summary_total">
+              <span>Total:</span>
+              <span className="total_amount">
+                Rs: {products.reduce((total, item) => total + parseFloat(item.price), 0)}
+              </span>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

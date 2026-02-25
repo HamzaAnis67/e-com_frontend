@@ -140,65 +140,68 @@ const AddProduct = () => {
       />
       <div className="container_form">
         <h1>Add product Form</h1>
-        <TextField
-          error
-          fullWidth
-          value={productName}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="productName"
-          label="productName"
-          variant="outlined"
-          className="text_field"
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <TextField
-          error
-          fullWidth
-          value={color}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="color"
-          label="Color"
-          variant="outlined"
-          className="text_field"
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <TextField
-          error
-          fullWidth
-          value={price}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="price"
-          label="Price"
-          variant="outlined"
-          className="text_field"
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <TextField
-          error
-          fullWidth
-          multiline
-          rows={4}
-          value={description}
-          onChange={handleChange}
-          name="description"
-          id="outlined-basic"
-          label="Description"
-          variant="outlined"
-          className="text_field"
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <TextField
-          error
-          fullWidth
-          onChange={handleUpload}
-          type="file"
-          id="outlined-basic"
-          variant="outlined"
-        />
-        <Button onClick={handleSubmit} fullWidth variant="contained">
+        <div className="form_fields">
+          <TextField
+            error
+            fullWidth
+            value={productName}
+            onChange={handleChange}
+            id="outlined-basic"
+            name="productName"
+            label="productName"
+            variant="outlined"
+            className="text_field"
+            sx={{ input: { color: "rgb(250, 55, 55)" } }}
+          />
+          <TextField
+            error
+            fullWidth
+            value={color}
+            onChange={handleChange}
+            id="outlined-basic"
+            name="color"
+            label="Color"
+            variant="outlined"
+            className="text_field"
+            sx={{ input: { color: "rgb(250, 55, 55)" } }}
+          />
+          <TextField
+            error
+            fullWidth
+            value={price}
+            onChange={handleChange}
+            id="outlined-basic"
+            name="price"
+            label="Price"
+            variant="outlined"
+            className="text_field"
+            sx={{ input: { color: "rgb(250, 55, 55)" } }}
+          />
+          <TextField
+            error
+            fullWidth
+            multiline
+            rows={4}
+            value={description}
+            onChange={handleChange}
+            name="description"
+            id="outlined-basic"
+            label="Description"
+            variant="outlined"
+            className="text_field"
+            sx={{ input: { color: "rgb(250, 55, 55)" } }}
+          />
+          <TextField
+            error
+            fullWidth
+            onChange={handleUpload}
+            type="file"
+            id="outlined-basic"
+            variant="outlined"
+            className="file_field"
+          />
+        </div>
+        <Button onClick={handleSubmit} fullWidth variant="contained" className="submit_button">
           Submit
         </Button>
       </div>

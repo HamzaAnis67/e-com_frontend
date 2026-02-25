@@ -1,5 +1,5 @@
 .feedback_info {
-	margin-top: 30px;
+	margin-top: 10px;
 	border: solid;
 	border-radius: 10px;
 	border-color: #000;
@@ -7,4 +7,9 @@
 }
 .feedback_info h3{
 	color: rgb(250, 55, 55);
+	font-size: 24px;
+}
+.feedback_heading{
+	text-align: center;
+	margin-top: 30px;
 }

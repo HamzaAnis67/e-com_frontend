@@ -80,42 +80,42 @@ const Product_detail = () => {
           <CircularProgress />
         ) : (
           <>
-            <Grid container spacing={4}>
-              <Grid item md={4}>
+            <Grid container spacing={{ xs: 2, sm: 3, md: 4 }}>
+              <Grid item xs={12} md={5} lg={4}>
                 <div className="detail_page">
-                  <img src={test.image} />
+                  <img src={test.image} alt={test.productName} />
                 </div>
               </Grid>
-              <Grid item md={8}>
+              <Grid item xs={12} md={7} lg={8}>
                 <div className="product_details">
                   <h2>{"Name: " + test.productName}</h2>
                   {/* <h2>{"ID: " + test._id}</h2> */}
                   <h2>{"Price: " + test.price + " Rs"}</h2>
                   <h2>{"Description: " + test.description}</h2>
-                  <Button
-                    variant="outlined"
-                    color="error"
-                    style={{ marginRight: "30px" }}
-                    onClick={() => addToCart(test)}
-                  >
-                    Add To Cart
-                  </Button>
-                  <Button
-                    className="RemoveFromCart_btn"
-                    variant="outlined"
-                    color="error"
-                    disabled={!(cartItems.some(item => item.productName === test.productName))}
-                    onClick={() => removeFromCart(test.productName)}
-                  >
-                    Remove From Cart
-                  </Button>
-                  <br />
-                  <br />
-                </div>
-                <div>
-                  <Link to="/">
-                    <Button variant="contained">Back To Home Page</Button>
-                  </Link>
+                  <div className="button_container">
+                    <Button
+                      variant="outlined"
+                      color="error"
+                      className="cart_button"
+                      onClick={() => addToCart(test)}
+                    >
+                      Add To Cart
+                    </Button>
+                    <Button
+                      className="RemoveFromCart_btn"
+                      variant="outlined"
+                      color="error"
+                      disabled={!(cartItems.some(item => item.productName === test.productName))}
+                      onClick={() => removeFromCart(test.productName)}
+                    >
+                      Remove From Cart
+                    </Button>
+                  </div>
+                  <div className="back_button_container">
+                    <Link to="/">
+                      <Button variant="contained">Back To Home Page</Button>
+                    </Link>
+                  </div>
                 </div>
               </Grid>
             </Grid>
@@ -130,18 +130,21 @@ const Product_detail = () => {
                   message={message}
                 />
                 <Grid container>
-                  <Grid item md={4}></Grid>
-                  <Grid item md={8}>
-                    <div>
+                  <Grid item xs={12}>
+                    <div className="admin_actions">
                       <IconButton
                         onClick={() => navigate(`/products/edit/${id}`)}
+                        className="action_button"
                       >
                         <EditIcon
                           fontSize="large"
                           className="singleproduct_icon"
                         />
                       </IconButton>
-                      <IconButton onClick={() => deleteSingleProduct()}>
+                      <IconButton 
+                        onClick={() => deleteSingleProduct()}
+                        className="action_button"
+                      >
                         <DeleteIcon
                           fontSize="large"
                           className="singleproduct_icon"

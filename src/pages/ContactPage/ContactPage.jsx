@@ -72,40 +72,72 @@ const ContactPage = () => {
         autoHideDuration={3000}
         message={message}
       />
-      <div className="Login_heading">
-        <h1>Submit Your FeedBack/Query</h1>
+      <div className="contact_heading">
+        <h1>Get in Touch</h1>
+        <p>We'd love to hear from you! Send us your feedback or queries.</p>
       </div>
-      <div className="container_Loginform">
-        <TextField
-        error
-          type="email"
-          fullWidth
-          value={customerEmail}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="customerEmail"
-          label="Email"
-          variant="outlined"
-          className="text_field"
-          required
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <TextField
-          error
-          fullWidth
-          value={customerFeedback}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="feedback"
-          label="Feedback/Query"
-          variant="outlined"
-          className="text_field"
-          required
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <Button onClick={handleSubmit} fullWidth variant="contained" >
-          Submit
-        </Button>
+      <div className="contact_container">
+        <div className="contact_form">
+          <div className="form_fields">
+            <TextField
+              type="email"
+              fullWidth
+              value={customerEmail}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="customerEmail"
+              label="Email Address"
+              variant="outlined"
+              className="text_field"
+              required
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+            />
+            <TextField
+              fullWidth
+              multiline
+              rows={4}
+              value={customerFeedback}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="feedback"
+              label="Your Feedback/Query"
+              variant="outlined"
+              className="text_field"
+              required
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+            />
+          </div>
+          <Button onClick={handleSubmit} fullWidth variant="contained" className="submit_button">
+            Send Message
+          </Button>
+        </div>
+        
+        <div className="contact_info">
+          <div className="info_card">
+            <h2>Contact Information</h2>
+            <div className="info_item">
+              <span className="info_label">Email:</span>
+              <span className="info_value">support@ecommerce.com</span>
+            </div>
+            <div className="info_item">
+              <span className="info_label">Phone:</span>
+              <span className="info_value">+1 234 567 8900</span>
+            </div>
+            <div className="info_item">
+              <span className="info_label">Address:</span>
+              <span className="info_value">123 Commerce St, Business City, BC 12345</span>
+            </div>
+            <div className="info_item">
+              <span className="info_label">Hours:</span>
+              <span className="info_value">Mon-Fri: 9AM-6PM, Sat-Sun: 10AM-4PM</span>
+            </div>
+          </div>
+          
+          <div className="response_card">
+            <h3>Response Time</h3>
+            <p>We typically respond to inquiries within 24 hours during business days.</p>
+          </div>
+        </div>
       </div>
     </>
   );
