@@ -1,8 +1,269 @@
-.thankyou_page {
-	color: #66fcf1;
-	text-align: center;
-	margin-top: 15%;
+/* Thank You Container */
+.thankyou_container {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 40px 20px;
+	box-sizing: border-box;
 }
+
+/* Thank You Page */
+.thankyou_page {
+	background: white;
+	padding: 60px 40px;
+	border-radius: 20px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+	border: 3px solid rgb(250, 55, 55);
+	text-align: center;
+	max-width: 600px;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+/* Success Icon */
+.success_icon {
+	font-size: clamp(4rem, 8vw, 6rem);
+	color: #4caf50;
+	margin-bottom: 20px;
+	animation: successPulse 1.5s ease-in-out;
+}
+
+@keyframes successPulse {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+	50% {
+		transform: scale(1.1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+/* Thank You Title */
+.thankyou_title {
+	color: rgb(250, 55, 55);
+	font-size: clamp(1.5rem, 4vw, 2.2rem);
+	font-weight: 600;
+	margin: 0 0 20px 0;
+	line-height: 1.3;
+}
+
+/* Thank You Message */
+.thankyou_message {
+	color: #333;
+	font-size: clamp(1rem, 2.5vw, 1.3rem);
+	font-weight: 500;
+	margin: 0 0 15px 0;
+	line-height: 1.5;
+}
+
+/* Thank You Sub-message */
+.thankyou_submessage {
+	color: #666;
+	font-size: clamp(0.9rem, 2vw, 1.1rem);
+	margin: 0 0 30px 0;
+	line-height: 1.5;
+}
+
+/* Order Info */
+.order_info {
+	background: rgba(250, 55, 55, 0.05);
+	padding: 25px;
+	border-radius: 15px;
+	margin: 30px 0;
+	border: 1px solid rgba(250, 55, 55, 0.2);
+}
+
+.info_item {
+	color: #333;
+	font-size: clamp(0.9rem, 2vw, 1rem);
+	margin: 0 0 10px 0;
+	line-height: 1.4;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+.info_item:last-child {
+	margin-bottom: 0;
+}
+
+.info_item strong {
+	color: rgb(250, 55, 55);
+	font-weight: 600;
+}
+
+/* Thank You Button */
 .thankyou_button {
 	text-align: center;
+	margin-top: 20px;
+}
+
+.home_link {
+	text-decoration: none;
+	display: inline-block;
+}
+
+.home_button {
+	height: 50px;
+	font-size: clamp(0.9rem, 2vw, 1.1rem);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	transition: all 0.3s ease;
+	border-radius: 8px;
+	padding: 0 24px;
+}
+
+.home_button:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(250, 55, 55, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.thankyou_container {
+		padding: 30px 15px;
+		min-height: auto;
+	}
+	
+	.thankyou_page {
+		padding: 40px 25px;
+		border-radius: 15px;
+	}
+	
+	.success_icon {
+		font-size: clamp(3rem, 10vw, 5rem);
+		margin-bottom: 15px;
+	}
+	
+	.thankyou_title {
+		font-size: clamp(1.3rem, 5vw, 2rem);
+		margin-bottom: 15px;
+	}
+	
+	.thankyou_message {
+		font-size: clamp(0.95rem, 3vw, 1.2rem);
+		margin-bottom: 12px;
+	}
+	
+	.thankyou_submessage {
+		font-size: clamp(0.85rem, 3vw, 1rem);
+		margin-bottom: 25px;
+	}
+	
+	.order_info {
+		padding: 20px;
+		margin: 25px 0;
+	}
+	
+	.info_item {
+		font-size: clamp(0.85rem, 3vw, 0.95rem);
+		margin-bottom: 8px;
+		flex-direction: column;
+		gap: 4px;
+		text-align: center;
+	}
+	
+	.home_button {
+		height: 45px;
+		font-size: clamp(0.85rem, 3vw, 1rem);
+		padding: 0 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.thankyou_container {
+		padding: 20px 10px;
+	}
+	
+	.thankyou_page {
+		padding: 30px 20px;
+		border-radius: 12px;
+	}
+	
+	.success_icon {
+		font-size: clamp(2.5rem, 12vw, 4rem);
+		margin-bottom: 12px;
+	}
+	
+	.thankyou_title {
+		font-size: clamp(1.2rem, 6vw, 1.8rem);
+		margin-bottom: 12px;
+	}
+	
+	.thankyou_message {
+		font-size: clamp(0.9rem, 4vw, 1.1rem);
+		margin-bottom: 10px;
+	}
+	
+	.thankyou_submessage {
+		font-size: clamp(0.8rem, 4vw, 0.95rem);
+		margin-bottom: 20px;
+	}
+	
+	.order_info {
+		padding: 15px;
+		margin: 20px 0;
+	}
+	
+	.info_item {
+		font-size: clamp(0.8rem, 4vw, 0.9rem);
+		margin-bottom: 6px;
+	}
+	
+	.home_button {
+		height: 40px;
+		font-size: clamp(0.8rem, 4vw, 0.95rem);
+		padding: 0 16px;
+	}
+}
+
+@media (max-width: 320px) {
+	.thankyou_page {
+		padding: 25px 15px;
+		border-radius: 10px;
+	}
+	
+	.success_icon {
+		font-size: clamp(2rem, 15vw, 3.5rem);
+		margin-bottom: 10px;
+	}
+	
+	.thankyou_title {
+		font-size: clamp(1.1rem, 7vw, 1.6rem);
+		margin-bottom: 10px;
+	}
+	
+	.thankyou_message {
+		font-size: clamp(0.85rem, 5vw, 1rem);
+		margin-bottom: 8px;
+	}
+	
+	.thankyou_submessage {
+		font-size: clamp(0.75rem, 5vw, 0.9rem);
+		margin-bottom: 15px;
+	}
+	
+	.order_info {
+		padding: 12px;
+		margin: 15px 0;
+	}
+	
+	.info_item {
+		font-size: clamp(0.75rem, 5vw, 0.85rem);
+		margin-bottom: 5px;
+	}
+	
+	.home_button {
+		height: 38px;
+		font-size: clamp(0.75rem, 5vw, 0.9rem);
+		padding: 0 12px;
+	}
 }

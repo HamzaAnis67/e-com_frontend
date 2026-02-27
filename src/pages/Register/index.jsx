@@ -88,41 +88,83 @@ const Register = () => {
         autoHideDuration={3000}
         message={message}
       />
-      <div className="Login_heading">
-        <h1>Register Your Self</h1>
+      
+      <div className="register_heading">
+        <h1>Create Account</h1>
+        <p>Join us to start shopping for amazing products</p>
       </div>
-      <div className="container_Loginform">
-        <TextField
-        error
-          fullWidth
-          value={userEmail}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="userEmail"
-          label="UserEmail"
-          variant="outlined"
-          type="email"
-          className="text_field"
-          required
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <TextField
-        error
-          fullWidth
-          value={password}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="password"
-          label="Password"
-          variant="outlined"
-          type="password"
-          className="text_field"
-          required
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <Button onClick={handleSubmit} fullWidth variant="contained">
-          Register
-        </Button>
+      
+      <div className="register_container">
+        <div className="register_form">
+          <div className="form_fields">
+            <TextField
+              error
+              fullWidth
+              value={userEmail}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="userEmail"
+              label="Email Address"
+              variant="outlined"
+              type="email"
+              className="text_field"
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+            />
+            <TextField
+              error
+              fullWidth
+              value={password}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="password"
+              label="Password"
+              variant="outlined"
+              type="password"
+              className="text_field"
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+              helperText="Password must be at least 6 characters"
+            />
+          </div>
+          <Button onClick={handleSubmit} fullWidth variant="contained" className="submit_button">
+            Register
+          </Button>
+          
+          <div className="form_footer">
+            <p>Already have an account?</p>
+            <Button 
+              variant="text" 
+              className="login_link"
+              onClick={() => navgiate("/login")}
+            >
+              Sign In
+            </Button>
+          </div>
+        </div>
+        
+        <div className="register_info">
+          <div className="info_card">
+            <h2>Welcome!</h2>
+            <p>Create your account to access exclusive features and personalized shopping experience.</p>
+            <div className="feature_list">
+              <div className="feature_item">
+                <span className="feature_icon">🛍️</span>
+                <span>Shop Premium Products</span>
+              </div>
+              <div className="feature_item">
+                <span className="feature_icon">🚚</span>
+                <span>Fast Delivery</span>
+              </div>
+              <div className="feature_item">
+                <span className="feature_icon">💳</span>
+                <span>Secure Payments</span>
+              </div>
+              <div className="feature_item">
+                <span className="feature_icon">🎁</span>
+                <span>Special Offers</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

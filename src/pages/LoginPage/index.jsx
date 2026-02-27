@@ -77,37 +77,66 @@ const LoginPage = () => {
         message={message}
       />
 
-      <div className="Login_heading">
-        <h1>Admin Login Page</h1>
+      <div className="login_heading">
+        <h1>Admin Login</h1>
+        <p>Enter your credentials to access the admin panel</p>
       </div>
-      <div className="container_Loginform">
-        <TextField
-          fullWidth
-          value={userEmail}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="userEmail"
-          label="UserEmail"
-          variant="outlined"
-          type="email"
-          className="text_field"
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <TextField
-          fullWidth
-          value={password}
-          onChange={handleChange}
-          id="outlined-basic"
-          name="password"
-          label="Password"
-          variant="outlined"
-          type="password"
-          className="text_field"
-          sx={{ input: { color: "rgb(250, 55, 55)" } }}
-        />
-        <Button onClick={handleSubmit} fullWidth variant="contained">
-          LOGIN
-        </Button>
+      
+      <div className="login_container">
+        <div className="login_form">
+          <div className="form_fields">
+            <TextField
+              fullWidth
+              error
+              value={userEmail}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="userEmail"
+              label="Email Address"
+              variant="outlined"
+              type="email"
+              className="text_field"
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+            />
+            <TextField
+              fullWidth
+              error
+              value={password}
+              onChange={handleChange}
+              id="outlined-basic"
+              name="password"
+              label="Password"
+              variant="outlined"
+              type="password"
+              className="text_field"
+              sx={{ input: { color: "rgb(250, 55, 55)" } }}
+            />
+          </div>
+          <Button onClick={handleSubmit} fullWidth variant="contained" className="submit_button">
+            Login
+          </Button>
+        </div>
+        
+        <div className="login_info">
+          <div className="info_card">
+            <h2>Welcome Back!</h2>
+            <p>Access your admin dashboard to manage products, view orders, and handle customer feedback.</p>
+            <div className="feature_list">
+              <div className="feature_item">
+                <span className="feature_icon">📦</span>
+                <span>Manage Products</span>
+              </div>
+              <div className="feature_item">
+                <span className="feature_icon">🛒</span>
+                <span>View Orders</span>
+              </div>
+              <div className="feature_item">
+                <span className="feature_icon">💬</span>
+                <span>Customer Feedback</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

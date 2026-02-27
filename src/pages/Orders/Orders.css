@@ -1,11 +1,258 @@
-.Orders_info {
-	margin: 30px 0;
-	border: solid;
-	border-radius: 10px;
-	border-color: #000;
-	padding: 20px;
-	margin-bottom: 20px;
+/* Orders Heading */
+.orders_heading {
+	text-align: center;
+	margin: 40px 0 30px 0;
+	padding: 0 20px;
 }
-.Orders_info h3 {
+
+.orders_heading h1 {
 	color: rgb(250, 55, 55);
+	font-size: clamp(1.8rem, 5vw, 2.5rem);
+	font-weight: 600;
+	margin: 0 0 15px 0;
+}
+
+.orders_heading p {
+	color: #666;
+	font-size: clamp(1rem, 2.5vw, 1.2rem);
+	margin: 0;
+	line-height: 1.5;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+/* Loading Container */
+.loading_container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 200px;
+}
+
+/* Empty State */
+.empty_state {
+	text-align: center;
+	padding: 60px 20px;
+	color: #666;
+}
+
+.empty_state h6 {
+	color: rgb(250, 55, 55);
+	font-size: clamp(1.2rem, 3vw, 1.5rem);
+	margin-bottom: 10px;
+}
+
+.empty_state p {
+	font-size: clamp(0.9rem, 2vw, 1.1rem);
+	margin: 0;
+}
+
+/* Orders Container */
+.orders_container {
+	padding: 20px 0 40px;
+}
+
+/* Order Card */
+.order_card {
+	background: white;
+	border-radius: 15px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+	border: 2px solid rgb(250, 55, 55);
+	transition: all 0.3s ease;
+	height: 100%;
+}
+
+.order_card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.order_content {
+	padding: 25px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+/* Order Header */
+.order_header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgba(250, 55, 55, 0.2);
+}
+
+.customer_name {
+	color: rgb(250, 55, 55);
+	font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+	font-weight: 600;
+	margin: 0;
+	flex: 1;
+}
+
+.order_id {
+	color: #666;
+	font-size: clamp(0.8rem, 2vw, 0.9rem);
+	background: rgba(250, 55, 55, 0.1);
+	padding: 4px 8px;
+	border-radius: 4px;
+	white-space: nowrap;
+}
+
+/* Order Details */
+.order_details {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	flex: 1;
+}
+
+.detail_item {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.detail_label {
+	color: #333;
+	font-weight: 600;
+	font-size: clamp(0.85rem, 2vw, 0.95rem);
+}
+
+.detail_value {
+	color: #666;
+	font-size: clamp(0.8rem, 2vw, 0.9rem);
+	word-wrap: break-word;
+	line-height: 1.4;
+}
+
+/* Order Products */
+.order_products {
+	padding-top: 15px;
+	border-top: 1px solid rgba(250, 55, 55, 0.2);
+}
+
+.products_title {
+	color: rgb(250, 55, 55);
+	font-size: clamp(0.9rem, 2vw, 1rem);
+	font-weight: 600;
+	margin: 0 0 10px 0;
+}
+
+.products_list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.product_chip {
+	background-color: rgba(250, 55, 55, 0.1);
+	color: rgb(250, 55, 55);
+	border: 1px solid rgba(250, 55, 55, 0.3);
+	font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.orders_heading {
+		margin: 30px 0 25px 0;
+		padding: 0 15px;
+	}
+	
+	.orders_container {
+		padding: 15px 0 30px;
+	}
+	
+	.order_content {
+		padding: 20px;
+		gap: 15px;
+	}
+	
+	.order_header {
+		flex-direction: column;
+		gap: 8px;
+		align-items: flex-start;
+	}
+	
+	.order_id {
+		align-self: flex-start;
+	}
+}
+
+@media (max-width: 480px) {
+	.orders_heading {
+		margin: 20px 0 20px 0;
+		padding: 0 10px;
+	}
+	
+	.orders_container {
+		padding: 10px 0 25px;
+	}
+	
+	.order_content {
+		padding: 15px;
+		gap: 12px;
+	}
+	
+	.customer_name {
+		font-size: clamp(1rem, 4vw, 1.2rem);
+	}
+	
+	.order_id {
+		font-size: clamp(0.75rem, 3vw, 0.85rem);
+	}
+	
+	.detail_item {
+		gap: 3px;
+	}
+	
+	.detail_label {
+		font-size: clamp(0.8rem, 3vw, 0.9rem);
+	}
+	
+	.detail_value {
+		font-size: clamp(0.75rem, 3vw, 0.85rem);
+	}
+	
+	.products_title {
+		font-size: clamp(0.85rem, 3vw, 0.95rem);
+		margin-bottom: 8px;
+	}
+	
+	.products_list {
+		gap: 6px;
+	}
+	
+	.product_chip {
+		font-size: clamp(0.65rem, 3vw, 0.75rem);
+	}
+}
+
+@media (max-width: 320px) {
+	.order_content {
+		padding: 12px;
+		gap: 10px;
+	}
+	
+	.customer_name {
+		font-size: 1rem;
+	}
+	
+	.detail_label {
+		font-size: 0.8rem;
+	}
+	
+	.detail_value {
+		font-size: 0.75rem;
+	}
+	
+	.products_title {
+		font-size: 0.85rem;
+	}
+	
+	.product_chip {
+		font-size: 0.65rem;
+	}
 }

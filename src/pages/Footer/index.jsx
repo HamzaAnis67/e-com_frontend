@@ -21,7 +21,6 @@ const Footer = () => {
             <div className="footer_main">
               <div className="footer_brand">
                 <h4 className="brand_text">Thank You For Visiting</h4>
-                <p className="brand_subtext">E-Commerce Platform</p>
               </div>
               <div className="footer_links">
                 <Link to="/register" style={{ textDecoration: "none" }}>
