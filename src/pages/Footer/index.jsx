@@ -30,7 +30,7 @@ const Footer = () => {
                   <h4 className="footer_heading">Add Product</h4>
                 </Link>
                 <Link to="/orders" style={{ textDecoration: "none" }}>
-                  <h4 className="footer_heading">Cart Info</h4>
+                  <h4 className="footer_heading">Orders</h4>
                 </Link>
                 <Link to="/allfeedbacks" style={{ textDecoration: "none" }}>
                   <h4 className="footer_heading">Feedbacks</h4>
